@@ -13,8 +13,12 @@ type CompletionSuggester struct {
 
 func (t *CompletionSuggester) Suggest(field, value string) ([]string, error) {
 	suggester := elastic.NewCompletionSuggester("suggester")
-	suggester.Prefix(value)
-	suggester.Field(field).SkipDuplicates(true)
+	suggester.Text(value).
+		Field(field).
+		SkipDuplicates(true).
+		FuzzyOptions(
+			elastic.NewFuzzyCompletionSuggesterOptions().EditDistance(2),
+		)
 
 	res, err := t.client.Search().
 		Index(t.storageES.Index()).
@@ -37,6 +41,7 @@ func (t *CompletionSuggester) Suggest(field, value string) ([]string, error) {
 	for _, suggestion := range suggestions {
 		for _, opt := range suggestion.Options {
 			resSuggest = append(resSuggest, opt.Text)
+			//fmt.Printf("%s\n", string(*opt.Source))
 		}
 	}
 

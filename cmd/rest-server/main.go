@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 
 	"github.com/olivere/elastic"
@@ -26,6 +27,12 @@ func main() {
 
 	app := gramework.New()
 
+	indexTemplate, err := template.ParseFiles("static/index.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	app.GET("/", api.NewIndex(indexTemplate))
 	app.GET("/search", api.NewSearch(search))
 	app.GET("/suggest/builder_name", api.NewSuggest(yacht.BuilderNameSuggestField, suggester))
 	app.GET("/suggest/model_name", api.NewSuggest(yacht.ModelNameSuggestField, suggester))

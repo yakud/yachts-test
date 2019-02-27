@@ -1,6 +1,8 @@
 package api
 
 import (
+	"html/template"
+	"log"
 	"strconv"
 
 	"github.com/gramework/gramework"
@@ -19,7 +21,7 @@ type Search struct {
 	search *yacht.Search
 }
 
-func (t *Search) Handler(ctx *gramework.Context) (interface{}, error) {
+func (t *Search) Handler(ctx *gramework.Context) error {
 	from, err := strconv.ParseInt(string(ctx.QueryArgs().Peek("from")), 10, 32)
 	if err != nil {
 		from = 0
@@ -40,15 +42,30 @@ func (t *Search) Handler(ctx *gramework.Context) (interface{}, error) {
 		filters = append(filters, yacht.Filter("builder_name", string(builderName)))
 	}
 
-	yachts, totalRows, err := t.search.Search(int(from), int(size), filters)
+	yachts, _, err := t.search.Search(int(from), int(size), filters)
 	if err != nil {
 		// @TODO:
+
 	}
 
-	return SearchResponse{
-		Yachts:    yachts,
-		TotalRows: totalRows,
-	}, nil
+	//if bytes.HasPrefix(ctx.Request.Header.ContentType(), []byte("application/json")) {
+	//	return SearchResponse{
+	//		Yachts:    yachts,
+	//		TotalRows: totalRows,
+	//	}, nil
+	//}
+
+	searchTemplate, err := template.ParseFiles("static/search.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := searchTemplate.Execute(ctx.Response.BodyWriter(), yachts); err != nil {
+		return err
+	}
+	ctx.HTML()
+
+	return nil
 }
 
 func NewSearch(search *yacht.Search) *Search {
