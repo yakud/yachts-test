@@ -6,34 +6,16 @@
 
     <script src="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.js"></script>
     <link rel="stylesheet" href="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css">
-
-    <style>
-        body {
-            font-family: Tahoma, serif;
-        }
-
-        .ui-widget input {
-
-            width: 250px;
-        }
-
-        form {
-            padding: 100px 0 0 0;
-            text-align: center;
-        }
-
-        .search-btn {
-            margin: 20px 0 0 0;
-        }
-
-        .autocomplete-suggestions {
-            font-size: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/style/style.css">
 </head>
 <body>
 <form action="/search" method="get">
     <h1>Yacht search</h1>
+
+    <div class="stats">
+        Stats: <span>0ms</span>
+    </div>
+
     <div class="ui-widget builder-block">
         <input id="builder_name" name="builder_name" placeholder="Builder name">
         <input id="model_name" name="model_name" placeholder="Model name">
@@ -42,47 +24,10 @@
     <div class="ui-widget model-block">
     </div>
 
-
     <input type="submit" value="Search" class="search-btn">
 </form>
 
-<script>
-
-    function httpGetAsync(theUrl, callback)
-    {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
-                callback(xmlHttp.responseText);
-        };
-        xmlHttp.open("GET", theUrl, true); // true for asynchronous
-        xmlHttp.send(null);
-
-        return xmlHttp;
-    }
-
-    new autoComplete({
-        selector: '#builder_name',
-        minChars: 1,
-        delay: 1,
-        source: function(term, response){
-            httpGetAsync('/suggest/builder_name?q=' + term, function(data){
-                response(JSON.parse(data));
-            });
-        }
-    });
-
-    new autoComplete({
-        selector: '#model_name',
-        minChars: 1,
-        delay: 1,
-        source: function(term, response){
-            httpGetAsync('/suggest/model_name?q=' + term, function(data){
-                response(JSON.parse(data));
-            });
-        }
-    });
-</script>
+<script src="/static/js/search.js"></script>
 
 </body>
 </html>

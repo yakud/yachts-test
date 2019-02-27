@@ -32,6 +32,9 @@ func main() {
 		log.Fatal(err)
 	}
 
+	app.GET("/static/style/*static", app.ServeDirNoCache("./"))
+	app.GET("/static/js/*static", app.ServeDirNoCache("./"))
+
 	app.GET("/", api.NewIndex(indexTemplate))
 	app.GET("/search", api.NewSearch(search))
 	app.GET("/suggest/builder_name", api.NewSuggest(yacht.BuilderNameSuggestField, suggester))

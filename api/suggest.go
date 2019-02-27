@@ -1,9 +1,16 @@
 package api
 
 import (
+	"time"
+
 	"github.com/gramework/gramework"
 	"github.com/yakud/yachts-test/yacht"
 )
+
+type suggestResponse struct {
+	Suggest []string `json:"suggest"`
+	Stats   string   `json:"stats"`
+}
 
 type Suggest struct {
 	field     string
@@ -13,12 +20,16 @@ type Suggest struct {
 func (t *Suggest) Handler(ctx *gramework.Context) (interface{}, error) {
 	text := ctx.QueryArgs().Peek("q")
 
+	now := time.Now()
 	suggests, err := t.suggester.Suggest(t.field, string(text))
 	if err != nil {
-		// @TODO:
+		return nil, err
 	}
 
-	return suggests, nil
+	return suggestResponse{
+		Suggest: suggests,
+		Stats:   time.Now().Sub(now).String(),
+	}, nil
 }
 
 func NewSuggest(field string, suggester *yacht.CompletionSuggester) *Suggest {

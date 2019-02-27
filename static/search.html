@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Yacht search | Yakud test</title>
-
-    <script src="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.js"></script>
-    <link rel="stylesheet" href="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css">
-
-    <style>
-        table td {
-            padding: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/style/style.css">
 </head>
 <body>
 
+<div class="stats">{{.Stats}}</div>
+
 <table>
+    <thead>
     <tr>
         <td>Id</td>
         <td>Builder name</td>
         <td>Model name</td>
         <td>Owner name</td>
+        <td>Free now</td>
+        <td>Free after</td>
     </tr>
-    {{range .}}
+    </thead>
+    {{range .Yachts}}
     <tr>
         <td>{{.Id}}</td>
         <td>{{.BuilderName}}</td>
         <td>{{.ModelName}}</td>
         <td>{{.OwnerName}}</td>
+        <td>{{.IsAvailableNow}}</td>
+        <td>{{.AvailableFrom}}</td>
     </tr>
     {{end}}
 </table>

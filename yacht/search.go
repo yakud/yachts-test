@@ -30,7 +30,7 @@ func (t *Search) Search(from, size int, filters []SearchFilter) ([]Model, int, e
 		From(from).
 		Size(size).
 		Pretty(true).
-		Sort("model_name", true).
+		Sort("builder_name", true).
 		Do(context.Background())
 	if err != nil {
 		return nil, 0, err

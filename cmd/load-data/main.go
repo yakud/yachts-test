@@ -27,9 +27,7 @@ func main() {
 	client := gds.NewClient(clientConfig)
 
 	storageEs := yacht.NewStorageES(esClient)
-	if err := storageEs.DeleteIndex(); err != nil {
-		log.Fatal(err)
-	}
+	storageEs.DeleteIndex()
 	if err := storageEs.CreateIndexIfNotExists(); err != nil {
 		log.Fatal(err)
 	}

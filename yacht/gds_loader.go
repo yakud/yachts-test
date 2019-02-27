@@ -12,6 +12,7 @@ type GDSLoader struct {
 }
 
 func (t *GDSLoader) LoadTo(storage *StorageES) error {
+	fmt.Println("Start loading")
 	// Load companies
 	companiesList, err := t.client.CharterCompanies()
 	if err != nil {
@@ -107,6 +108,8 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 			}
 		}
 	}
+
+	fmt.Println("Total yachts:", len(yachts))
 
 	return nil
 }

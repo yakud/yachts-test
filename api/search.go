@@ -2,14 +2,28 @@ package api
 
 import (
 	"html/template"
-	"log"
 	"strconv"
+	"time"
 
 	"github.com/gramework/gramework"
 	"github.com/yakud/yachts-test/yacht"
 )
 
-const defaultSize = 10
+const defaultSize = 500
+
+type searchTemplateData struct {
+	Yachts []yachtsTemplate
+	Stats  string
+}
+
+type yachtsTemplate struct {
+	Id             uint64
+	BuilderName    string
+	ModelName      string
+	OwnerName      string
+	IsAvailableNow bool
+	AvailableFrom  string
+}
 
 type SearchResponse struct {
 	TotalRows int           `json:"total"`
@@ -42,25 +56,46 @@ func (t *Search) Handler(ctx *gramework.Context) error {
 		filters = append(filters, yacht.Filter("builder_name", string(builderName)))
 	}
 
-	yachts, _, err := t.search.Search(int(from), int(size), filters)
-	if err != nil {
-		// @TODO:
-
-	}
-
-	//if bytes.HasPrefix(ctx.Request.Header.ContentType(), []byte("application/json")) {
-	//	return SearchResponse{
-	//		Yachts:    yachts,
-	//		TotalRows: totalRows,
-	//	}, nil
-	//}
-
 	searchTemplate, err := template.ParseFiles("static/search.html")
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
-	if err := searchTemplate.Execute(ctx.Response.BodyWriter(), yachts); err != nil {
+	now := time.Now()
+
+	yachts, _, err := t.search.Search(int(from), int(size), filters)
+	if err != nil {
+		return err
+	}
+
+	templateYachts := make([]yachtsTemplate, 0, len(yachts))
+	for _, y := range yachts {
+		isAvailable := now.Before(y.ReservationFrom) || now.After(y.ReservationTo)
+
+		var availableFrom string
+		if !isAvailable {
+			availableFrom = y.ReservationTo.Format("2006-01-02 15:04")
+		}
+
+		templateYachts = append(templateYachts, yachtsTemplate{
+			Id: y.Id,
+
+			BuilderName:    y.BuilderName,
+			ModelName:      y.ModelName,
+			OwnerName:      y.OwnerName,
+			IsAvailableNow: isAvailable,
+			AvailableFrom:  availableFrom,
+		})
+	}
+
+	searchStats := time.Now().Sub(now).String()
+
+	templateData := searchTemplateData{
+		Yachts: templateYachts,
+		Stats:  searchStats,
+	}
+
+	if err := searchTemplate.Execute(ctx.Response.BodyWriter(), templateData); err != nil {
 		return err
 	}
 	ctx.HTML()
