@@ -74,6 +74,7 @@ func (t *StorageES) CreateIndexIfNotExists() error {
 
 	return nil
 }
+
 func (t *StorageES) DeleteIndex() error {
 	_, err := t.client.DeleteIndex(t.indexES).Do(context.Background())
 	if err != nil {

@@ -22,11 +22,13 @@ func main() {
 
 	storageEs := yacht.NewStorageES(esClient)
 	suggester := yacht.NewCompletionSuggester(esClient, storageEs)
+	search := yacht.NewSearch(esClient, storageEs)
 
 	app := gramework.New()
 
-	app.GET("/complete/suggest/builder_name", api.NewCompleteSuggest(yacht.BuilderNameSuggestField, suggester))
-	app.GET("/complete/suggest/model_name", api.NewCompleteSuggest(yacht.ModelNameSuggestField, suggester))
+	app.GET("/search", api.NewSearch(search))
+	app.GET("/suggest/builder_name", api.NewCompleteSuggest(yacht.BuilderNameSuggestField, suggester))
+	app.GET("/suggest/model_name", api.NewCompleteSuggest(yacht.ModelNameSuggestField, suggester))
 
 	if err := app.ListenAndServe("127.0.0.1:8087"); err != nil {
 		log.Fatal(err)

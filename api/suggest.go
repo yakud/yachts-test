@@ -11,7 +11,7 @@ type CompleteSuggest struct {
 }
 
 func (t *CompleteSuggest) Handler(ctx *gramework.Context) (interface{}, error) {
-	text := ctx.QueryArgs().Peek("text")
+	text := ctx.QueryArgs().Peek("q")
 
 	suggests, err := t.suggester.Suggest(t.field, string(text))
 	if err != nil {

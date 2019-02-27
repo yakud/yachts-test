@@ -13,8 +13,6 @@ type Search struct {
 }
 
 func (t *Search) Search(from, size int, filters []SearchFilter) ([]StorageESRow, int, error) {
-	// Search with a term query
-
 	queries := make([]elastic.Query, 0, len(filters))
 	for _, filter := range filters {
 		queries = append(queries, elastic.NewMatchPhrasePrefixQuery(filter.Field, filter.Value))
@@ -29,6 +27,7 @@ func (t *Search) Search(from, size int, filters []SearchFilter) ([]StorageESRow,
 		Index(t.storageES.Index()).
 		Type(t.storageES.Type()).
 		Query(query).
+		From(from).
 		Size(size).
 		Pretty(true).
 		Sort("model_name", true).
