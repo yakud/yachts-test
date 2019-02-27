@@ -1,6 +1,6 @@
 package gds
 
-type ApiConfig struct {
+type ClientConfig struct {
 	Entrypoint string
 	Login      string
 	Password   string

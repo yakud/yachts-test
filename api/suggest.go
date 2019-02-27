@@ -5,12 +5,12 @@ import (
 	"github.com/yakud/yachts-test/yacht"
 )
 
-type CompleteSuggest struct {
+type Suggest struct {
 	field     string
 	suggester *yacht.CompletionSuggester
 }
 
-func (t *CompleteSuggest) Handler(ctx *gramework.Context) (interface{}, error) {
+func (t *Suggest) Handler(ctx *gramework.Context) (interface{}, error) {
 	text := ctx.QueryArgs().Peek("q")
 
 	suggests, err := t.suggester.Suggest(t.field, string(text))
@@ -21,8 +21,8 @@ func (t *CompleteSuggest) Handler(ctx *gramework.Context) (interface{}, error) {
 	return suggests, nil
 }
 
-func NewCompleteSuggest(field string, suggester *yacht.CompletionSuggester) *CompleteSuggest {
-	return &CompleteSuggest{
+func NewSuggest(field string, suggester *yacht.CompletionSuggester) *Suggest {
+	return &Suggest{
 		field:     field,
 		suggester: suggester,
 	}

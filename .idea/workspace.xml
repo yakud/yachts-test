@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14e79588-68bb-4b36-963c-5f84026a0359" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/search.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/complete.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/complete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/search.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/suggest.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/suggest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/api_test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api_test/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/rest-server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/rest-server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gds/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/gds/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gds/api_config.go" beforeDir="false" afterPath="$PROJECT_DIR$/gds/client_config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yacht/gds_loader.go" beforeDir="false" afterPath="$PROJECT_DIR$/yacht/gds_loader.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yacht/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/yacht/search.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yacht/storage.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yacht/storage_es.go" beforeDir="false" afterPath="$PROJECT_DIR$/yacht/storage_es.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,12 +31,12 @@
           <entry key="Makefile" value="2" />
           <entry key="example" value="1" />
           <entry key="gitignore" value="1" />
-          <entry key="go" value="59" />
+          <entry key="go" value="72" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="59" />
+          <entry key="Go" value="72" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
@@ -42,12 +44,12 @@
         <counts>
           <entry key="Makefile" value="55" />
           <entry key="example" value="4" />
-          <entry key="go" value="7668" />
+          <entry key="go" value="7795" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="7668" />
+          <entry key="Go" value="7795" />
           <entry key="PLAIN_TEXT" value="59" />
         </counts>
       </usages-collector>
@@ -58,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmd/rest-server/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="219">
+              <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
               <folding>
                 <element signature="e#14#65#0" expanded="true" />
               </folding>
@@ -70,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/search.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="170">
+              <caret line="42" column="42" lean-forward="true" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
               <folding>
                 <element signature="e#13#107#0" expanded="true" />
               </folding>
@@ -80,34 +82,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmd/search_test/main.go">
+        <entry file="file://$PROJECT_DIR$/yacht/search.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/complete.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="e#13#95#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yacht/completion_suggester.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-226">
-              <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
-              <folding>
-                <element signature="e#15#67#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="410">
+              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -115,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yacht/gds_loader.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="104" column="31" lean-forward="true" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+            <state relative-caret-position="345">
+              <caret line="113" column="10" lean-forward="true" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -131,19 +109,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/yacht/search.go">
+        <entry file="file://$PROJECT_DIR$/gds/client.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
-              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+            <state relative-caret-position="120">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yacht/search_filter.go">
+        <entry file="file://$PROJECT_DIR$/yacht/completion_suggester.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+              <folding>
+                <element signature="e#15#67#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gds/client_config.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmd/api_test/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -151,8 +150,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yacht/storage_es.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="-1047">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -173,6 +172,7 @@
       <find>allCompanies</find>
       <find>reservations</find>
       <find>yachts</find>
+      <find>yakud</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
@@ -185,23 +185,25 @@
         <option value="$PROJECT_DIR$/api/example" />
         <option value="$PROJECT_DIR$/gds/api_config.go" />
         <option value="$PROJECT_DIR$/gds/request.go" />
-        <option value="$PROJECT_DIR$/gds/api.go" />
         <option value="$PROJECT_DIR$/gds/response.go" />
         <option value="$PROJECT_DIR$/yacht/model.go" />
         <option value="$PROJECT_DIR$/yacht/storage.go" />
         <option value="$PROJECT_DIR$/Makefile" />
-        <option value="$PROJECT_DIR$/yacht/gds_loader.go" />
-        <option value="$PROJECT_DIR$/cmd/api_test/main.go" />
         <option value="$PROJECT_DIR$/cmd/suggest_test/main.go" />
         <option value="$PROJECT_DIR$/yacht/search_filter.go" />
         <option value="$PROJECT_DIR$/cmd/search_test/main.go" />
         <option value="$PROJECT_DIR$/yacht/completion_suggester.go" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/yacht/search.go" />
         <option value="$PROJECT_DIR$/api/complete.go" />
         <option value="$PROJECT_DIR$/cmd/rest-server/main.go" />
-        <option value="$PROJECT_DIR$/api/search.go" />
+        <option value="$PROJECT_DIR$/api/suggest.go" />
         <option value="$PROJECT_DIR$/yacht/storage_es.go" />
+        <option value="$PROJECT_DIR$/api/search.go" />
+        <option value="$PROJECT_DIR$/yacht/search.go" />
+        <option value="$PROJECT_DIR$/gds/api.go" />
+        <option value="$PROJECT_DIR$/cmd/api_test/main.go" />
+        <option value="$PROJECT_DIR$/yacht/gds_loader.go" />
+        <option value="$PROJECT_DIR$/gds/client.go" />
       </list>
     </option>
   </component>
@@ -369,8 +371,8 @@
       <window_info anchor="bottom" id="Terminal" weight="0.426506" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.42048192" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42048192" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,13 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gds/api_config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../gramework/fasthttprouter_router.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -469,26 +464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gds/api.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="85" column="27" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="27" />
-          <folding>
-            <element signature="e#13#136#0" expanded="true" />
-            <element signature="n#!!block;n#Yachts#0" />
-            <element signature="n#!!block;n#Yachts#1" />
-            <element signature="n#!!block;n#YachtModels#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gds/response.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -538,16 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/api_test/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-          <folding>
-            <element signature="e#14#107#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,6 +593,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/yacht/search_filter.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/suggest.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding>
+            <element signature="e#13#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/suggest_test/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -637,55 +619,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmd/search_test/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="178">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/search.go">
+    <entry file="file://$PROJECT_DIR$/gds/response.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#13#107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/complete.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#13#95#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="24">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmd/rest-server/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="219">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
           <folding>
             <element signature="e#14#65#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yacht/completion_suggester.go">
+    <entry file="file://$PROJECT_DIR$/api/search.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-226">
-          <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+        <state relative-caret-position="170">
+          <caret line="42" column="42" lean-forward="true" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding>
-            <element signature="e#15#67#0" expanded="true" />
+            <element signature="e#13#107#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yacht/gds_loader.go">
+    <entry file="file://$PROJECT_DIR$/yacht/storage_es.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="104" column="31" lean-forward="true" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+        <state relative-caret-position="-1047">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yacht/search.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -696,24 +672,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yacht/search_filter.go">
+    <entry file="file://$PROJECT_DIR$/yacht/gds_loader.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        <state relative-caret-position="345">
+          <caret line="113" column="10" lean-forward="true" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yacht/storage_es.go">
+    <entry file="file://$PROJECT_DIR$/cmd/api_test/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="270">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yacht/search.go">
+    <entry file="file://$PROJECT_DIR$/gds/client_config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yacht/completion_suggester.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+          <folding>
+            <element signature="e#15#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gds/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>

@@ -6,7 +6,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/yakud/gramework"
+	"github.com/gramework/gramework"
 
 	"github.com/valyala/fasthttp"
 )
@@ -28,12 +28,12 @@ const (
 
 var defaultClient fasthttp.Client
 
-type Api struct {
-	config *ApiConfig
+type Client struct {
+	config *ClientConfig
 	client *fasthttp.Client
 }
 
-func (t *Api) CharterBaseList() (*RestCharterBaseList, error) {
+func (t *Client) CharterBaseList() (*RestCharterBaseList, error) {
 	code, body, err := t.Do(PathCharterBases, nil)
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func (t *Api) CharterBaseList() (*RestCharterBaseList, error) {
 	return resp, nil
 }
 
-func (t *Api) CharterCompanies() (*RestCharterCompanyList, error) {
+func (t *Client) CharterCompanies() (*RestCharterCompanyList, error) {
 	code, body, err := t.Do(PathCharterCompanies, nil)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (t *Api) CharterCompanies() (*RestCharterCompanyList, error) {
 	return resp, nil
 }
 
-func (t *Api) YachtBuilders() (*RestYachtBuilderList, error) {
+func (t *Client) YachtBuilders() (*RestYachtBuilderList, error) {
 	code, body, err := t.Do(PathYachtBuilders, nil)
 	if err != nil {
 		return nil, err
@@ -108,7 +108,7 @@ func (t *Api) YachtBuilders() (*RestYachtBuilderList, error) {
 	return resp, nil
 }
 
-func (t *Api) Yachts(charterCompanyId uint64) (*RestYachtList, error) {
+func (t *Client) Yachts(charterCompanyId uint64) (*RestYachtList, error) {
 	path := methodPath(fmt.Sprintf(string(PathYachts), charterCompanyId))
 	code, body, err := t.Do(path, nil)
 	if err != nil {
@@ -134,7 +134,7 @@ func (t *Api) Yachts(charterCompanyId uint64) (*RestYachtList, error) {
 	return resp, nil
 }
 
-func (t *Api) YachtModels() (*RestYachtModelList, error) {
+func (t *Client) YachtModels() (*RestYachtModelList, error) {
 	code, body, err := t.Do(PathYachtModels, nil)
 	if err != nil {
 		return nil, err
@@ -159,7 +159,7 @@ func (t *Api) YachtModels() (*RestYachtModelList, error) {
 	return resp, nil
 }
 
-func (t *Api) YachtReservation(req *RestYachtReservationsRequest) (*RestYachtReservationList, error) {
+func (t *Client) YachtReservation(req *RestYachtReservationsRequest) (*RestYachtReservationList, error) {
 	if req == nil {
 		return nil, errors.New("request is nil")
 	}
@@ -195,7 +195,7 @@ func (t *Api) YachtReservation(req *RestYachtReservationsRequest) (*RestYachtRes
 	return resp, nil
 }
 
-func (t *Api) FreeYachts(req *RestFreeYachtsRequest) (*RestFreeYachtList, error) {
+func (t *Client) FreeYachts(req *RestFreeYachtsRequest) (*RestFreeYachtList, error) {
 	if req == nil {
 		return nil, errors.New("request is nil")
 	}
@@ -232,7 +232,7 @@ func (t *Api) FreeYachts(req *RestFreeYachtsRequest) (*RestFreeYachtList, error)
 }
 
 // Do make request to black box with params
-func (t *Api) Do(path methodPath, body []byte) (int, []byte, error) {
+func (t *Client) Do(path methodPath, body []byte) (int, []byte, error) {
 	req := fasthttp.AcquireRequest()
 
 	uri := req.URI()
@@ -266,20 +266,20 @@ func (t *Api) Do(path methodPath, body []byte) (int, []byte, error) {
 	return code, body, err
 }
 
-func (t *Api) makeAuthCredentials() ([]byte, error) {
+func (t *Client) makeAuthCredentials() ([]byte, error) {
 	// @TODO: cache it
 	return json.Marshal(t.Credentials())
 }
 
-func (t *Api) Credentials() RestAuthentication {
+func (t *Client) Credentials() RestAuthentication {
 	return RestAuthentication{
 		Username: t.config.Login,
 		Password: t.config.Password,
 	}
 }
 
-func NewApi(config *ApiConfig) *Api {
-	return &Api{
+func NewClient(config *ClientConfig) *Client {
+	return &Client{
 		config: config,
 		client: &defaultClient,
 	}

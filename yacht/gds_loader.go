@@ -8,19 +8,19 @@ import (
 )
 
 type GDSLoader struct {
-	api *gds.Api
+	client *gds.Client
 }
 
 func (t *GDSLoader) LoadTo(storage *StorageES) error {
 	// Load companies
-	companiesList, err := t.api.CharterCompanies()
+	companiesList, err := t.client.CharterCompanies()
 	if err != nil {
 		return err
 	}
 
 	// Load Builders
 	fmt.Println("All builers list:")
-	buildersResp, err := t.api.YachtBuilders()
+	buildersResp, err := t.client.YachtBuilders()
 	if err != nil {
 		return err
 	}
@@ -33,7 +33,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 
 	// Load models
 	fmt.Println("All models list:")
-	modelsResp, err := t.api.YachtModels()
+	modelsResp, err := t.client.YachtModels()
 	if err != nil {
 		return err
 	}
@@ -46,10 +46,10 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 
 	// Load reservations
 	fmt.Println("Yacht reservation:")
-	reservationsResp, err := t.api.YachtReservation(&gds.RestYachtReservationsRequest{
+	reservationsResp, err := t.client.YachtReservation(&gds.RestYachtReservationsRequest{
 		PeriodFrom: time.Now().Format("02.01.2006"),
 		PeriodTo:   time.Now().Add(time.Hour * 24 * 7).Format("02.01.2006"),
-		//Credentials: api.Credentials(),
+		//Credentials: client.Credentials(),
 	})
 	if err != nil {
 		return err
@@ -65,7 +65,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 	yachts := make([]*Model, 0)
 	for _, co := range companiesList.Companies {
 		// Load yachts
-		yachtsList, err := t.api.Yachts(co.Id)
+		yachtsList, err := t.client.Yachts(co.Id)
 		if err != nil {
 			return err
 		}
@@ -111,8 +111,8 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 	return nil
 }
 
-func NewGDSLoader(gdsApi *gds.Api) *GDSLoader {
+func NewGDSLoader(client *gds.Client) *GDSLoader {
 	return &GDSLoader{
-		api: gdsApi,
+		client: client,
 	}
 }

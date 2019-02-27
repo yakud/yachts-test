@@ -40,6 +40,7 @@ func (t *StorageES) Add(yacht *Model) error {
 		ModelNameSuggest:   yacht.ModelName,
 	}
 
+	// @TODO: bulk upload
 	_, err := t.client.Index().
 		Index(t.indexES).
 		Type(t.typeES).

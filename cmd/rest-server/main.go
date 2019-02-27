@@ -27,8 +27,8 @@ func main() {
 	app := gramework.New()
 
 	app.GET("/search", api.NewSearch(search))
-	app.GET("/suggest/builder_name", api.NewCompleteSuggest(yacht.BuilderNameSuggestField, suggester))
-	app.GET("/suggest/model_name", api.NewCompleteSuggest(yacht.ModelNameSuggestField, suggester))
+	app.GET("/suggest/builder_name", api.NewSuggest(yacht.BuilderNameSuggestField, suggester))
+	app.GET("/suggest/model_name", api.NewSuggest(yacht.ModelNameSuggestField, suggester))
 
 	if err := app.ListenAndServe("127.0.0.1:8087"); err != nil {
 		log.Fatal(err)

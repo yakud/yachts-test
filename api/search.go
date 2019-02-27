@@ -10,8 +10,8 @@ import (
 const defaultSize = 10
 
 type SearchResponse struct {
-	TotalRows int
-	Yachts    []yacht.StorageESRow
+	TotalRows int           `json:"total"`
+	Yachts    []yacht.Model `json:"yachts"`
 }
 
 type Search struct {

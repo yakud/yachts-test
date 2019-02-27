@@ -12,7 +12,7 @@ type Search struct {
 	storageES *StorageES
 }
 
-func (t *Search) Search(from, size int, filters []SearchFilter) ([]StorageESRow, int, error) {
+func (t *Search) Search(from, size int, filters []SearchFilter) ([]Model, int, error) {
 	queries := make([]elastic.Query, 0, len(filters))
 	for _, filter := range filters {
 		queries = append(queries, elastic.NewMatchPhrasePrefixQuery(filter.Field, filter.Value))
@@ -36,10 +36,10 @@ func (t *Search) Search(from, size int, filters []SearchFilter) ([]StorageESRow,
 		return nil, 0, err
 	}
 
-	var row StorageESRow
-	var rows []StorageESRow
+	var row Model
+	var rows []Model
 	for _, item := range res.Each(reflect.TypeOf(row)) {
-		if row, ok := item.(StorageESRow); ok {
+		if row, ok := item.(Model); ok {
 			rows = append(rows, row)
 		}
 	}
