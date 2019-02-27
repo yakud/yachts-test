@@ -9,7 +9,7 @@ import (
 
 func _storage() *StorageES {
 	esClient, err := elastic.NewClient(
-		elastic.SetURL("http://127.0.0.1:9200"),
+		elastic.SetURL("http://0.0.0.0:9200"),
 		elastic.SetSniff(false),
 		//elastic.SetTraceLog(log.New(os.Stderr, "[[TRACE LOG]] ", 0)),
 	)

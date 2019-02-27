@@ -17,7 +17,7 @@ func main() {
 		Password:   "Rest59Tb",
 	}
 	esClient, err := elastic.NewClient(
-		elastic.SetURL("http://127.0.0.1:9200"),
+		elastic.SetURL("http://0.0.0.0:9200"),
 		elastic.SetSniff(false),
 	)
 	if err != nil {
