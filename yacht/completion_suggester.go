@@ -12,7 +12,6 @@ type CompletionSuggester struct {
 }
 
 func (t *CompletionSuggester) Suggest(field, value string) ([]string, error) {
-	// Search with a term query
 	suggester := elastic.NewCompletionSuggester("suggester")
 	suggester.Prefix(value)
 	suggester.Field(field).SkipDuplicates(true)
@@ -28,12 +27,13 @@ func (t *CompletionSuggester) Suggest(field, value string) ([]string, error) {
 		return nil, err
 	}
 
+	resSuggest := make([]string, 0)
+
 	suggestions, found := res.Suggest["suggester"]
 	if !found {
-		return nil, nil
+		return resSuggest, nil
 	}
 
-	resSuggest := make([]string, 0)
 	for _, suggestion := range suggestions {
 		for _, opt := range suggestion.Options {
 			resSuggest = append(resSuggest, opt.Text)

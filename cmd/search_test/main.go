@@ -35,5 +35,5 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-	fmt.Println("1 suggest for: ", time.Now().Sub(start))
+	fmt.Println("1 search for: ", time.Now().Sub(start))
 }
