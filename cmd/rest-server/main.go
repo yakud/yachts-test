@@ -37,8 +37,8 @@ func main() {
 
 	app.GET("/", api.NewIndex(indexTemplate))
 	app.GET("/search", api.NewSearch(search))
-	app.GET("/suggest/builder_name", api.NewSuggest(yacht.BuilderNameSuggestField, suggester))
-	app.GET("/suggest/model_name", api.NewSuggest(yacht.ModelNameSuggestField, suggester))
+	app.GET("/suggest/builder_name", api.NewSuggest(yacht.SuggestFieldBuilderName, suggester))
+	app.GET("/suggest/model_name", api.NewSuggest(yacht.SuggestFieldModelName, suggester))
 
 	if err := app.ListenAndServe("127.0.0.1:8087"); err != nil {
 		log.Fatal(err)

@@ -74,17 +74,3 @@ type RestYachtReservation struct {
 
 	RestPeriodRange
 }
-
-type RestFreeYachtList struct {
-	RestStatus
-	RestPeriodRange
-
-	FreeYachts []RestFreeYacht `json:"freeYachts"`
-}
-
-type RestFreeYacht struct {
-	RestPeriodRange
-	YachtId uint64 `json:"yachtId"`
-
-	ReservationStatus string `json:"reservationStatus"`
-}

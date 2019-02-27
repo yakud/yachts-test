@@ -103,6 +103,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 
 			yachts = append(yachts, yachtModel)
 
+			// @TODO: bulk upload
 			if err := storage.Add(yachtModel); err != nil {
 				return err
 			}

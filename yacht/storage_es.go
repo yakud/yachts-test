@@ -13,11 +13,6 @@ import (
 const defaultIndex = "yachts"
 const defaultType = "_doc"
 
-const (
-	BuilderNameSuggestField = "builder_name_suggest"
-	ModelNameSuggestField   = "model_name_suggest"
-)
-
 type StorageESRow struct {
 	Model
 
@@ -42,10 +37,11 @@ func (t *StorageES) Add(yacht *Model) error {
 
 	// @TODO: bulk upload
 	_, err := t.client.Index().
-		Index(t.indexES).
-		Type(t.typeES).
+		Index(t.Index()).
+		Type(t.Type()).
 		Id(strconv.FormatInt(int64(row.Id), 10)).
 		BodyJson(row).
+		Refresh("true").
 		Do(context.Background())
 	if err != nil {
 		return err
@@ -77,7 +73,7 @@ func (t *StorageES) CreateIndexIfNotExists() error {
 }
 
 func (t *StorageES) DeleteIndex() error {
-	_, err := t.client.DeleteIndex(t.indexES).Do(context.Background())
+	_, err := t.client.DeleteIndex(t.Index()).Do(context.Background())
 	if err != nil {
 		return err
 	}
@@ -86,11 +82,11 @@ func (t *StorageES) DeleteIndex() error {
 }
 
 func (t *StorageES) Index() string {
-	return defaultIndex
+	return t.indexES
 }
 
 func (t *StorageES) Type() string {
-	return defaultType
+	return t.typeES
 }
 
 func (t *StorageES) GetMapping() string {
@@ -100,7 +96,7 @@ func (t *StorageES) GetMapping() string {
 		"number_of_replicas": 0
 	},
 	"mappings":{
-		"_doc":{
+		"` + t.typeES + `":{
 			"properties":{
 				"id":{
 					"type":"long"

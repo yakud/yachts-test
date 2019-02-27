@@ -17,7 +17,6 @@ func (t *Index) Handler(ctx *gramework.Context) error {
 		log.Fatal(err)
 	}
 
-	//if err := t.template.Execute(ctx.Response.BodyWriter(), nil); err != nil {
 	if err := indexTemplate.Execute(ctx.Response.BodyWriter(), nil); err != nil {
 		return err
 	}

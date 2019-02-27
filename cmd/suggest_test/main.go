@@ -24,7 +24,7 @@ func main() {
 
 	start := time.Now()
 	for i := 0; i < 1; i++ {
-		_, err := suggester.Suggest(yacht.BuilderNameSuggestField, "Bava")
+		_, err := suggester.Suggest(yacht.SuggestFieldBuilderName, "Bava")
 		if err != nil {
 			log.Fatal(err)
 		}

@@ -6,14 +6,19 @@ import (
 	"github.com/olivere/elastic"
 )
 
+const (
+	SuggestFieldBuilderName = "builder_name_suggest"
+	SuggestFieldModelName   = "model_name_suggest"
+)
+
 type CompletionSuggester struct {
 	client    *elastic.Client
 	storageES *StorageES
 }
 
-func (t *CompletionSuggester) Suggest(field, value string) ([]string, error) {
+func (t *CompletionSuggester) Suggest(field, q string) ([]string, error) {
 	suggester := elastic.NewCompletionSuggester("suggester")
-	suggester.Text(value).
+	suggester.Text(q).
 		Field(field).
 		SkipDuplicates(true).
 		FuzzyOptions(

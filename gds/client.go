@@ -195,42 +195,6 @@ func (t *Client) YachtReservation(req *RestYachtReservationsRequest) (*RestYacht
 	return resp, nil
 }
 
-func (t *Client) FreeYachts(req *RestFreeYachtsRequest) (*RestFreeYachtList, error) {
-	if req == nil {
-		return nil, errors.New("request is nil")
-	}
-
-	req.Credentials = t.Credentials()
-
-	reqJson, err := json.Marshal(req)
-	if err != nil {
-		return nil, err
-	}
-
-	code, body, err := t.Do(PathFreeYachts, reqJson)
-	if err != nil {
-		return nil, err
-	}
-
-	if code != fasthttp.StatusOK {
-		return nil, errors.Errorf("Bad status code: %d", code)
-	}
-
-	resp := &RestFreeYachtList{
-		FreeYachts: make([]RestFreeYacht, 0),
-	}
-
-	if err := json.Unmarshal(body, resp); err != nil {
-		return nil, err
-	}
-
-	if resp.Status != StatusOK {
-		return nil, errors.Errorf("Bad status code: %s %-v", resp.Status, resp)
-	}
-
-	return resp, nil
-}
-
 // Do make request to black box with params
 func (t *Client) Do(path methodPath, body []byte) (int, []byte, error) {
 	req := fasthttp.AcquireRequest()
