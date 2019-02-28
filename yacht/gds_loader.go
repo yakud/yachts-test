@@ -20,7 +20,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 	}
 
 	// Load Builders
-	fmt.Println("All builers list:")
+	fmt.Println("Builers")
 	buildersResp, err := t.client.YachtBuilders()
 	if err != nil {
 		return err
@@ -33,7 +33,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 	}
 
 	// Load models
-	fmt.Println("All models list:")
+	fmt.Println("Models")
 	modelsResp, err := t.client.YachtModels()
 	if err != nil {
 		return err
@@ -46,7 +46,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 	}
 
 	// Load reservations
-	fmt.Println("Yacht reservation:")
+	fmt.Println("Yacht reservation")
 	reservationsResp, err := t.client.YachtReservation(&gds.RestYachtReservationsRequest{
 		PeriodFrom: time.Now().Format("02.01.2006"),
 		PeriodTo:   time.Now().Add(time.Hour * 24 * 7).Format("02.01.2006"),
@@ -62,7 +62,7 @@ func (t *GDSLoader) LoadTo(storage *StorageES) error {
 		//fmt.Printf("%+v\n", reservation)
 	}
 
-	fmt.Println("All companies and yachts list:")
+	fmt.Println("All companies and yachts list")
 	yachts := make([]*Model, 0)
 	for _, co := range companiesList.Companies {
 		// Load yachts
