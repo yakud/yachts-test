@@ -2,7 +2,7 @@
 
 ## How to run:
 ```
-make && make run
+make && make run && open http://0.0.0.0/
 ```
 
 ## How to test:
