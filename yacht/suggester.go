@@ -30,7 +30,13 @@ func (t *CompletionSuggester) Suggest(field, q string) ([]string, error) {
 		Type(t.storageES.Type()).
 		Suggester(suggester).
 		Size(0). // we dont' want the hits, just the suggestions
-		Pretty(true).
+		Pretty(false).
+		Explain(false).
+		TrackScores(false).
+		NoStoredFields().
+		RequestCache(true).
+		FetchSource(false).
+		Profile(false).
 		Do(context.Background())
 	if err != nil {
 		return nil, err
